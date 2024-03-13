@@ -9,7 +9,11 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+//Exporting routes files
+const AuthRoutes = require("./routes/AuthRoutes");
+
 //Routes
+app.use("/auth", AuthRoutes);
 app.use("/", (req, res) => {
   res.send("Hello World");
 });
