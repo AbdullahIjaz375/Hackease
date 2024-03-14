@@ -26,7 +26,7 @@ const Header = ({ user }) => {
             <Nav.Link href="logout">Logout</Nav.Link>
           </>
         ) : (
-          <Nav.Link href="login">Login</Nav.Link>
+          <Nav.Link href="signup">Sign up</Nav.Link>
         )}
       </Nav>
     </Navbar>
