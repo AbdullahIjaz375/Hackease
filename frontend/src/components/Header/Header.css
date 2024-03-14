@@ -1,0 +1,22 @@
+/* Header.css */
+.header-navbar {
+  background-color: #c96;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-navbar .navbar-brand,
+.header-navbar .nav-link {
+  transition: color 0.3s ease;
+}
+
+.header-navbar .navbar-brand:hover,
+.header-navbar .nav-link:hover {
+  color: #007bff; /* Change the color to your desired lighter shade */
+}
+
+.bold-text {
+  font-weight: bold;
+}
