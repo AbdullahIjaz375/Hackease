@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 const FormWrapper = styled.form`
@@ -12,8 +11,4 @@ const FormWrapper = styled.form`
   text-align: center;
 `;
 
-const Form = ({ children }) => {
-  return <FormWrapper>{children}</FormWrapper>;
-};
-
-export default Form;
+export default FormWrapper;
