@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Container from "../components/UI/Container.js";
+import Container from "../components/UI/Container/Container.jsx";
 import SignUpContainer from "../components/Auth/SignUpContainer.js";
 import SignInContainer from "../components/Auth/SignInContainer.js";
 import OverlayContainer from "../components/Auth/OverlayContainer.js";
@@ -10,9 +10,8 @@ import RightOverlayPanel from "../components/Auth/RightOverlayPanel.js";
 import Form from "../components/UI/Form.js";
 import Title from "../components/UI/Title.js";
 import Input from "../components/UI/Input.js";
-import Button from "../components/UI/Button.js";
-import GhostButton from "../components/UI/GhostButton.js";
-import Anchor from "../components/UI/Anchor.js";
+import Button from "../components/UI/Button/Button.jsx";
+import Anchor from "../components/UI/Anchor/Anchor.jsx";
 import Paragraph from "../components/UI/Paragraph.js";
 
 const AuthPageWrapper = styled.div`
@@ -60,7 +59,9 @@ const AuthPage = () => {
               <Paragraph>
                 To keep connected with us please login with your personal info
               </Paragraph>
-              <GhostButton onClick={() => toggleSignIn()}>Sign In</GhostButton>
+              <Button ghost onClick={() => toggleSignIn()}>
+                Sign In
+              </Button>
             </LeftOverlayPanel>
 
             <RightOverlayPanel signIn={!signIn}>
@@ -68,7 +69,9 @@ const AuthPage = () => {
               <Paragraph>
                 Enter Your personal details and start journey with us
               </Paragraph>
-              <GhostButton onClick={() => toggleSignIn()}>Sign Up</GhostButton>
+              <Button ghost onClick={() => toggleSignIn()}>
+                Sign Up
+              </Button>
             </RightOverlayPanel>
           </Overlay>
         </OverlayContainer>
