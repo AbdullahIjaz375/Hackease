@@ -9,11 +9,12 @@ const ButtonWrapper = styled.button`
   color: ${({ ghost }) => (ghost ? "#ffffff" : "#ffffff")};
 `;
 
-const Button = ({ children, ghost, onClick }) => {
+const Button = ({ children, ghost, onClick, type }) => {
   return (
     <ButtonWrapper
       className={ghost ? "ghost-button" : "solid-button"}
       onClick={onClick}
+      type={type}
     >
       {children}
     </ButtonWrapper>
