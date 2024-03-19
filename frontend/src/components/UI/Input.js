@@ -9,8 +9,16 @@ const InputWrapper = styled.input`
   width: 100%;
 `;
 
-const Input = ({ type, placeholder }) => {
-  return <InputWrapper type={type} placeholder={placeholder} />;
+const Input = ({ type, placeholder, name, value, onChange }) => {
+  return (
+    <InputWrapper
+      type={type}
+      placeholder={placeholder}
+      name={name}
+      value={value}
+      onChange={onChange}
+    />
+  );
 };
 
 export default Input;

@@ -1,5 +1,5 @@
 import React from "react";
-import Product from "./Product"; // Make sure this path is correct
+import Product from "./Product";
 
 const ProductsList = ({ products }) => {
   return (

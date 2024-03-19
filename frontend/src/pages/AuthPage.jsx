@@ -10,6 +10,7 @@ import Anchor from "../components/UI/Anchor/Anchor.jsx";
 import Paragraph from "../components/UI/Paragraph.js";
 import AuthContainer from "../components/Auth/Auth/AuthContainer.jsx"; // Ensure this path is correct
 import { useAuth } from "../context/AuthContext.js";
+import apiRequest from "../API/api.js";
 
 const AuthPageWrapper = styled.div`
   display: flex;
@@ -42,6 +43,7 @@ const AuthPage = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+    console.log(`Handling change for ${name}: ${value}`);
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -51,25 +53,21 @@ const AuthPage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    console.log(formData.email, formData.password, formData.name);
+
+    const endpoint = signIn ? "/auth/login" : "/auth/signup";
+    const options = {
+      method: signIn ? "POST" : "PUT",
+      body: {
+        email: formData.email,
+        password: formData.password,
+        ...(signIn ? {} : { username: formData.name }),
+      },
+    };
+
     try {
-      const response = await fetch("http://localhost:5000/auth/login", {
-        method: "GET", // Explicitly setting the method to POST
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: "user@example.com",
-          password: "userpassword",
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const result = await response.json();
+      const result = await apiRequest(endpoint, options);
       console.log(result);
-      // Handle success
     } catch (error) {
       console.error("There was an error!", error);
     }
