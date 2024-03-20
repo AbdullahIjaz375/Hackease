@@ -6,8 +6,7 @@ import Navbar from "./components/Navbar/Navbar.jsx";
 const App = () => {
   return (
     <AuthProvider>
-      <Navbar />
-      {/* <RouterComponent /> */}
+      <RouterComponent />
     </AuthProvider>
   );
 };

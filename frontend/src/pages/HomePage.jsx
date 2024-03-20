@@ -1,6 +1,7 @@
 import Container from "../components/UI/Container/Container.jsx";
 import ProductItem from "../components/Products/ProductItem.jsx";
 import styled from "styled-components";
+import Navbar from "../components/Navbar/Navbar.jsx";
 
 const productData = [
   {
@@ -133,14 +134,14 @@ const ProductsGrid = styled.div`
 
 const HomePage = () => {
   return (
-    <Container>
-      <h1>Welcome to Our Store!</h1>
-      <ProductsGrid>
-        {productData.map((product) => (
-          <ProductItem key={product.id} product={product} />
-        ))}
-      </ProductsGrid>
-    </Container>
+    <Navbar />
+    // <Container>
+    //   <ProductsGrid>
+    //     {productData.map((product) => (
+    //       <ProductItem key={product.id} product={product} />
+    //     ))}
+    //   </ProductsGrid>
+    // </Container>
   );
 };
 
