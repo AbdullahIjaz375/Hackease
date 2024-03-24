@@ -3,10 +3,16 @@
   justify-content: space-between; /* Change from space-around to space-between */
   align-items: center; /* Align items vertically at the center */
   padding: 16px;
-  background-color: #ff416c;
-  box-shadow: 0 1px 3px -2px #ff416c;
+  background-color: #f8f8f8;
+  box-shadow: 0 6px 12px rgba(255, 65, 97, 0.5);
   width: 100%; /* Ensure the navbar spans the entire width */
+  position: fixed; /* Add this line to make the navbar fixed */
+  top: 0; /* Add this line to position the navbar at the top */
+  left: 0; /* Add this line to ensure the navbar is aligned to the left */
+  z-index: 1000; /* Add this line to ensure the navbar stays on top of other content */
+  height: 95px;
 }
+
 
 .nav-logo {
   display: flex;
@@ -50,11 +56,13 @@
   display: flex;
   align-items: center;
   gap: 45px;
+  justify-content: flex-end;
+  
 }
 
 .nav-login-cart button {
-  width: 157px;
-  height: 58px;
+  width: 100px;
+  height: 38px;
   outline: none;
   border: 1px solid #7a7a7a;
   border-radius: 75px;
@@ -63,6 +71,7 @@
   font-weight: 500;
   background: white;
   cursor: pointer;
+  margin-right: 350px;
 }
 
 .nav-login-cart button:active {

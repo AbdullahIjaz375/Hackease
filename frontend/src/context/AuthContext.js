@@ -1,23 +1,41 @@
-// AuthContext.js
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 const AuthContext = createContext();
 
-export const useAuth = () => useContext(AuthContext);
+// Adjust useAuth to provide setToken function
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
+  return context;
+};
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({ token: null }); // Initialize with token property
 
-  const login = (userData) => {
-    setUser(userData);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setUser({ token });
+    }
+  }, []);
+
+  const login = (token) => {
+    localStorage.setItem("token", token);
+    setUser({ token });
   };
 
   const logout = () => {
-    // Implement your logout logic here
-    setUser(null);
+    localStorage.removeItem("token");
+    setUser({ token: null });
   };
 
-  const value = { user, login, logout };
+  const setToken = (token) => {
+    setUser((prevUser) => ({ ...prevUser, token }));
+  };
+
+  const value = { user, login, logout, setToken }; // Include setToken in value
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

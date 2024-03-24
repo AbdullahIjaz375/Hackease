@@ -37,12 +37,16 @@ const Navbar = () => {
             >
               Contact
             </li>
-          </ul>
-          <div className="nav-login-cart">
+
+            
+            <div className="nav-login-cart">
             <button> Login</button>
             <img src={cart} alt="" height="50px" width="50px" />
             <div className="nav-cart-count">0</div>
           </div>
+            
+          </ul>
+        
         </div>
       </div>
     </div>

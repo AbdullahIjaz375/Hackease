@@ -1,35 +1,37 @@
 const User = require("../models/UserModel");
 const bcrypt = require("bcrypt");
 
+const jwt = require("jsonwebtoken");
+
 exports.signup = async (req, res) => {
   try {
     const { username, email, password } = req.body;
 
-    // Check if username or email already exists
-    const existingUser = await User.findOne({ $or: [{ username }, { email }] });
+    const existingUser = await user.findOne({ $or: [{ username }, { email }] });
     if (existingUser) {
       return res
         .status(400)
         .json({ message: "Username or email already exists" });
     }
 
-    // Create a new user instance
-    const newUser = new User({
+    const user = new user({
       username,
       email,
       password: password,
     });
 
-    // Save the user to the database
-    await newUser.save();
+    await user.save();
 
-    // Respond with success message
-    res
-      .status(201)
-      .json({ message: "User registered successfully", data: newUser });
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
+      expiresIn: process.env.JWT_EXPIRATION,
+    });
+
+    res.status(201).json({
+      message: "User registered successfully",
+      data: { newUser: user, token },
+    });
   } catch (error) {
-    // Handle errors
-    console.error(error);
+    // console.error(error);
     res.status(500).json({ message: error.message });
   }
 };
@@ -48,10 +50,13 @@ exports.login = async (req, res) => {
       return res.status(401).json({ message: "Invalid email or password" });
     }
 
-    // If the password matches, create a session or JWT token for authentication
-    // Here you can implement session-based or token-based authentication as per your application's requirements
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
+      expiresIn: process.env.JWT_EXPIRATION,
+    });
 
-    res.status(200).json({ message: "Login successful", data: user });
+    res
+      .status(200)
+      .json({ message: "Login successful", data: { user, token } });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: error.message });

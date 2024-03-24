@@ -20,14 +20,14 @@ const AuthPageWrapper = styled.div`
 `;
 
 const AuthPage = () => {
-  const [signIn, setSignIn] = useState(true);
-  const [contentVisible, setContentVisible] = useState(true);
-  const { login } = useAuth();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
     name: "",
   });
+  const [signIn, setSignIn] = useState(true);
+  const [contentVisible, setContentVisible] = useState(true);
+  const { login, setToken } = useAuth();
 
   const toggleSignIn = () => {
     setContentVisible(false);
@@ -43,7 +43,6 @@ const AuthPage = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(`Handling change for ${name}: ${value}`);
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -53,21 +52,33 @@ const AuthPage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    console.log(formData.email, formData.password, formData.name);
-
     const endpoint = signIn ? "/auth/login" : "/auth/signup";
     const options = {
       method: signIn ? "POST" : "PUT",
-      body: {
+      body: JSON.stringify({
         email: formData.email,
         password: formData.password,
         ...(signIn ? {} : { username: formData.name }),
+      }),
+      headers: {
+        "Content-Type": "application/json",
       },
     };
 
     try {
       const result = await apiRequest(endpoint, options);
-      console.log(result);
+      const { token, ...userData } = result.data; // Destructure token and user data
+
+      if (token) {
+        setToken(token); // Set token using the provided setToken function
+        localStorage.setItem("token", token); // Store token in local storage for persistence
+        console.log("Login successful! Redirecting...");
+        window.location.href = "/home"; // Redirect to home page
+      } else {
+        console.error(
+          "Login failed: Invalid credentials or missing token in response."
+        );
+      }
     } catch (error) {
       console.error("There was an error!", error);
     }

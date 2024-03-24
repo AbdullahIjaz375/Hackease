@@ -2,6 +2,8 @@ import Container from "../components/UI/Container/Container.jsx";
 import ProductItem from "../components/Products/ProductItem.jsx";
 import styled from "styled-components";
 import Navbar from "../components/Navbar/Navbar.jsx";
+import Hero from "../components/Hero/Hero.jsx";
+import Item from "../components/Item/Item.jsx";
 
 const productData = [
   {
@@ -134,15 +136,12 @@ const ProductsGrid = styled.div`
 
 const HomePage = () => {
   return (
+    <>
     <Navbar />
-    // <Container>
-    //   <ProductsGrid>
-    //     {productData.map((product) => (
-    //       <ProductItem key={product.id} product={product} />
-    //     ))}
-    //   </ProductsGrid>
-    // </Container>
+    <Item></Item>
+    </>
   );
 };
 
 export default HomePage;
+
