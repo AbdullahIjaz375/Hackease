@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./Navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { useAuth } from "../../context/AuthContext";
 
 import logo from "../../assets/icons/user-secret-solid.svg";
 import cart from "../../assets/icons/cart-shopping-solid.svg";
@@ -10,6 +11,12 @@ import cart from "../../assets/icons/cart-shopping-solid.svg";
 const Navbar = () => {
   const [menu, setMenu] = useState("shop");
   const navigate = useNavigate();
+  const { logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/auth");
+  };
 
   return (
     <div className="navbar">
@@ -27,7 +34,7 @@ const Navbar = () => {
         >
           Shop <hr />
         </li>
-        <li
+        {/* <li
           onClick={() => {
             setMenu("about");
           }}
@@ -40,18 +47,18 @@ const Navbar = () => {
           }}
         >
           Contact
-        </li>
+        </li> */}
       </ul>
 
       <div className="nav-login-cart">
-        {/* <button> Login</button> */}
+        <button onClick={() => handleLogout()}> Logout</button>
         <Link to="/cart">
           <FontAwesomeIcon
             icon={faShoppingCart}
             style={{ height: "40px", color: "#e6738e" }}
           />
         </Link>{" "}
-        <div className="nav-cart-count">0</div>
+        {/* <div className="nav-cart-count">0</div> */}
       </div>
     </div>
     // <div className="navbar">
