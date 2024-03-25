@@ -1,28 +1,22 @@
-
-
-
-
-
 /* Item.css */
 
 .products {
-    /* Your existing styles for the products container */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 100px;
-  }
-  
-  .product-row {
-    display: grid; /* Display children in a row */
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    margin-top: 50px; /* Allow items to wrap to the next line */
-    gap: 30px; /* Start items at the left side */
-    overflow-x: auto;
-    margin-bottom: 20px; /* Add some space at the bottom */
-    padding-bottom: 10px;
-  }
-  
-  /* You can add additional styling for individual products if needed */
-  
+  /* Your existing styles for the products container */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 1250px; /* Adjust this value to move the content down */
+}
+
+.product-row {
+  display: grid; /* Display children in a row */
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin-top: 50px; /* Allow items to wrap to the next line */
+  gap: 30px; /* Start items at the left side */
+  overflow-x: auto;
+  margin-bottom: 20px; /* Add some space at the bottom */
+  padding-bottom: 10px;
+}
+
+/* You can add additional styling for individual products if needed */

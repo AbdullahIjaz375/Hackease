@@ -13,11 +13,11 @@
   height: 95px;
 }
 
-
 .nav-logo {
   display: flex;
   align-items: center; /* Align items vertically at the center */
   gap: 10px;
+  cursor: pointer;
 }
 
 .nav-logo p {
@@ -42,6 +42,7 @@
   align-items: center;
   justify-content: center;
   gap: 3px;
+  cursor: pointer;
 }
 
 .nav-menu hr {
@@ -55,9 +56,8 @@
 .nav-login-cart {
   display: flex;
   align-items: center;
-  gap: 45px;
+  gap: 10px;
   justify-content: flex-end;
-  
 }
 
 .nav-login-cart button {
@@ -71,10 +71,9 @@
   font-weight: 500;
   background: white;
   cursor: pointer;
-  margin-right: 350px;
 }
 
-.nav-login-cart button:active {
+.nav-login-cart button:hover {
   background: #daaaaa;
 }
 
@@ -84,10 +83,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: -80px;
-  margin-left: 200px;
+  margin-top: -40px;
+  margin-left: -20px;
   border-radius: 11px;
   font-size: 14px;
-  background: red;
+  background: #7a7a7a;
   color: white;
+}
+
+.nav-login-cart .fa-shopping-cart {
+  font-size: 24px; /* Increase icon size */
+  color: #ff4141; /* Set color to #ff4141 */
 }

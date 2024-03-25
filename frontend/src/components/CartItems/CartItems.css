@@ -1,32 +1,87 @@
-.cartitems-format-main{
-    display: grid;
-    grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr 1fr;
-    align-items: center;
-    gap: 75px;
-    padding: 20px 0px;
-    color: #454545;
-    font-size: 18px;
-    font-weight: 600;
+.cartitems {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  font-family: Arial, sans-serif;
 }
 
-.caritems-format{
-    font-size: 17px;
-    font-weight: 500;
+.cartitems-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
 }
 
-.carticon-product-icon{
-    height: 62px;
+.cartitems-header p {
+  flex: 1;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
 }
 
-.cartitems-remove-icon{
-    width: 15px;
-    margin: 0px 40px;
-    cursor: pointer;
+.cartitems-item-row {
+  display: flex;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
 }
 
-.cartitems-quantity{
-    width: 64px;
-    height: 50px;
-    border: 2px solid #ebebeb;
-    background: #fff;
+.cartitems-item-row img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  object-fit: cover; /* Ensures image fills container */
+}
+
+.cartitems-item-row p {
+  flex: 1;
+  margin: 0 5px;
+}
+
+.cartitems-quantity {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 80px;
+}
+
+.cartitems-quantity button {
+  border: none;
+  background-color: #eee;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.cartitems-remove-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #999;
+  font-size: 14px;
+}
+
+.cartitems-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-top: 1px solid #ddd;
+  font-weight: bold;
+}
+
+.cartitems-checkout-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+  align-self: center; /* Centers button horizontally */
 }

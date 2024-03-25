@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { parseJwt } from "../utils/authUtils"; // Update with the correct path to authUtils.js
 
 const AuthContext = createContext();
 
@@ -12,12 +13,13 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState({ token: null }); // Initialize with token property
+  const [user, setUser] = useState({ token: null });
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      setUser({ token });
+      const decodedToken = parseJwt(token);
+      setUser({ token, ...decodedToken });
     }
   }, []);
 

@@ -56,6 +56,11 @@ exports.updateCartItem = async (req, res) => {
   const productId = req.params.productId;
   const quantity = req.body.quantity;
 
+  // Check for negative or zero quantity
+  if (quantity < 0) {
+    return res.status(400).json({ message: "Quantity must be at least 1" });
+  }
+
   try {
     const product = await Product.findById(productId);
     if (!product) {
@@ -73,8 +78,11 @@ exports.updateCartItem = async (req, res) => {
     );
 
     if (existingItemIndex !== -1) {
+      // Subtract the old item quantity before updating
       cart.totalPrice -= cart.items[existingItemIndex].quantity * product.price;
+      // Update the item quantity
       cart.items[existingItemIndex].quantity = quantity;
+      // Add the new item quantity after updating
       cart.totalPrice += quantity * product.price;
     }
 

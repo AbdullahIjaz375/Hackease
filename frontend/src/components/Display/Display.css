@@ -1,53 +1,87 @@
-.item{
-    width: 350px;
+/* Display.jsx */
+
+.product-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center items horizontally */
+  align-items: flex-start; /* Align items from the top */
+  gap: 1rem; /* Add space between items */
 }
 
-.item p{
-    margin: 6px 0px;
+.item {
+  flex: 1 1 200px; /* Allow items to grow and shrink with a base width */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items vertically */
+  padding: 1rem;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  overflow: hidden; /* Ensure content does not overflow */
 }
 
-.item-prices{
-    display: flex;
-    gap: 20px;
+.item img {
+  width: 100%; /* Ensure image fills the available width */
+  height: auto; /* Adjust height automatically to maintain aspect ratio */
+  object-fit: contain; /* Ensure the complete photo is shown */
+  margin-bottom: 1rem; /* Add some space below the image */
 }
 
-.item-price-new{
-    color: aliceblue;
-    font-size: 18px;
-    font-weight: 600;
+.item-prices {
+  width: 100%; /* Ensure price container fills item width */
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Align prices vertically */
+  margin: 1rem 0;
 }
 
-.item-price-old{
-    color: aqua;
-    font-size: 18px;
-    font-weight: 500;
-    text-decoration: line-through;
+.item-price-new,
+.item-price-old {
+  font-size: 1.125em;
+}
+
+.item-price-new {
+  color: #ff416c; /* Adjust color to match the button */
+  font-weight: 600;
+}
+
+.item-price-old {
+  color: #999; /* Subdued color for old price */
+  font-weight: 500;
+  text-decoration: line-through;
 }
 
 .product-description {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  .product-description-h2 {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  .button {
-    background-color: #007bff; /* Blue color, you can change it to your preferred color */
-    color: #fff; /* White text color */
-    border: none; /* Remove border */
-    padding: 10px 20px; /* Padding around the button text */
-    font-size: 16px; /* Font size */
-    cursor: pointer; /* Cursor style on hover */
-    border-radius: 5px; /* Rounded corners */
-    transition: background-color 0.3s ease; /* Smooth transition on hover */
-  }
+  font-size: 1em;
+  line-height: 1.6;
+  color: #333;
+  margin: 0.5rem 0;
+  text-align: center; /* Center-align text */
+}
 
-  .product-container {
-    display: flex; /* Use flexbox to arrange products in a row */
-    flex-wrap: wrap; /* Allow products to wrap to the next line if there's not enough space */
-    justify-content: space-between; /* Space evenly between products */
-  }
+.product-description-h2 {
+  font-size: 1.25em;
+  font-weight: bold;
+  margin-bottom: 0.625em;
+}
+
+.button {
+  width: auto; /* Auto width based on content */
+  background-color: #ff416c;
+  color: #fff;
+  border: none;
+  padding: 0.625em 1.25em;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 0.3125em;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #d32f5a;
+}
+
+.button:active {
+  background-color: #b71c46;
+}
